@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --paper: #f5f0e6;
+    --paper-strong: #efe5d1;
+    --paper-dark: #d8cfbd;
+    --ink: #111111;
+    --red: #e54b2b;
+    --orange: #ff9f1c;
+    --yellow: #ffd84d;
+    --green: #78c26d;
+    --steel: #8c8377;
+    --shadow: 8px 8px 0 #111111;
+    --shadow-sm: 4px 4px 0 #111111;
+    --shadow-lg: 12px 12px 0 #111111;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+    background:
+      linear-gradient(90deg, transparent 0, transparent calc(100% - 24px), #111111 calc(100% - 24px), #111111 100%),
+      linear-gradient(#00000010 1px, transparent 1px),
+      linear-gradient(90deg, #00000010 1px, transparent 1px),
+      var(--paper);
+    background-size: auto, 28px 28px, 28px 28px, auto;
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.45;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  button,
+  input {
+    font: inherit;
+  }
+
+  ::selection {
+    background: var(--yellow);
+    color: var(--ink);
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--paper-dark);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--ink);
+    border: 2px solid var(--paper-dark);
+  }
+}
+
+@layer components {
+  .brutal-panel {
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+
+  .brutal-panel-alt {
+    background: var(--paper-strong);
+    border: 3px solid var(--ink);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+
+  .neo-card {
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .neo-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #111111;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    border: 3px solid var(--ink);
+    padding: 0.9rem 1.25rem;
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.12s ease;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: var(--paper);
+    box-shadow: 6px 6px 0 #111111;
+  }
+
+  .btn-primary:hover:not(:disabled),
+  .btn-secondary:hover:not(:disabled) {
+    transform: translate(-2px, -2px);
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    box-shadow: 8px 8px 0 #111111;
+    background: #cf3d1f;
+  }
+
+  .btn-primary:active:not(:disabled),
+  .btn-secondary:active:not(:disabled) {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+  }
+
+  .btn-primary:disabled,
+  .btn-secondary:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .btn-secondary {
+    background: var(--yellow);
+    color: var(--ink);
+    box-shadow: 5px 5px 0 #111111;
+  }
+
+  .input-field {
+    width: 100%;
+    border: 3px solid var(--ink);
+    background: #fffdf8;
+    color: var(--ink);
+    padding: 1rem 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.95rem;
+    outline: none;
+    box-shadow: inset 0 0 0 0 #111111;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  }
+
+  .input-field::placeholder {
+    color: #6d665c;
+  }
+
+  .input-field:focus {
+    background: #fff7dc;
+    box-shadow: 4px 4px 0 #111111;
+    transform: translate(-1px, -1px);
+  }
+
+  .mono-url,
+  .mono-label {
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+  }
+
+  .mono-url {
+    font-size: 0.86rem;
+    letter-spacing: 0.01em;
+    word-break: break-all;
+  }
+
+  .mono-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid var(--ink);
+    background: var(--yellow);
+    color: var(--ink);
+    padding: 0.35rem 0.65rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.74rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0 #111111;
+  }
+
+  .divider {
+    height: 3px;
+    width: 100%;
+    background: var(--ink);
+  }
+
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .paper-stack::before {
+    content: '';
+    position: absolute;
+    inset: 10px -10px -10px 10px;
+    background: var(--orange);
+    border: 3px solid var(--ink);
+    z-index: -1;
+  }
+
+  .ink-stamp {
+    border: 3px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.35rem 0.6rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
