@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/creepurl/backend/config"
 	"github.com/creepurl/backend/database"
@@ -41,11 +42,14 @@ func main() {
 	middleware.SetupMiddleware(app)
 	routes.Setup(app, transformHandler, redirectHandler)
 
-	log.Printf("CreepURL API starting on port %s [%s]", cfg.Port, cfg.Environment)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	log.Printf("CreepURL API starting on port %s [%s]", port, cfg.Environment)
 	log.Printf("Base URL : %s", cfg.BaseURL)
 	log.Printf("DB file  : %s", cfg.DBPath)
 
-	if err := app.Listen(":" + cfg.Port); err != nil {
-		log.Fatalf("Failed to start server: %v", err)
-	}
+	log.Fatal(app.Listen(":" + port))
 }
