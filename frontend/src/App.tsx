@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { BackgroundEffects } from '@/components/features/BackgroundEffects'
+import { GenerationStatusCard } from '@/components/features/GenerationStatusCard'
 import { Hero } from '@/components/features/Hero'
 import { InputPanel } from '@/components/features/InputPanel'
 import { ResultsSection } from '@/components/features/ResultsSection'
@@ -28,6 +29,7 @@ export default function App() {
     <div className="relative min-h-screen overflow-x-hidden">
       <BackgroundEffects />
       <Navbar />
+      <GenerationStatusCard visible={state === 'success' && !!result} />
 
       <main className="relative z-10 pb-16 pt-24">
         <section className="mx-auto max-w-7xl px-4 sm:px-6">
