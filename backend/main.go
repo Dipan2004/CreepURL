@@ -44,7 +44,7 @@ func main() {
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = "7860"
 	}
 
 	log.Printf("CreepURL API starting on port %s [%s]", port, cfg.Environment)

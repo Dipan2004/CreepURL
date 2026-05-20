@@ -1,0 +1,9 @@
+.git
+.gitignore
+frontend
+backend/.env
+backend/creepurl.db
+backend/creepurl.db-shm
+backend/creepurl.db-wal
+**/node_modules
+**/dist
