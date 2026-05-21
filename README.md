@@ -4,11 +4,7 @@
 
 ### certified useless internet technology™  
 
-```txt
-friendship.exe has stopped working
-```
-
-<img src="./demo1.png" width="100%" />
+<img src="./preview.png" width="100%" />
 
 <br/>
 
