@@ -24,7 +24,7 @@ func NewTransformService(db *database.DB, baseURL string) *TransformService {
 }
 
 // Transform accepts plain args (no models.TransformRequest) so handlers need not import models
-func (s *TransformService) Transform(rawURL string, destructionLevel int) (*models.TransformResponse, error) {
+func (s *TransformService) Transform(rawURL string, destructionLevel int, baseURL string) (*models.TransformResponse, error) {
 	if err := validateURL(rawURL); err != nil {
 		return nil, err
 	}
@@ -32,7 +32,7 @@ func (s *TransformService) Transform(rawURL string, destructionLevel int) (*mode
 	level := clampLevel(destructionLevel)
 	count := variantCount(level)
 
-	links, err := s.shortener.Create(rawURL, level, count)
+	links, err := s.shortener.Create(rawURL, level, count, baseURL)
 	if err != nil {
 		return nil, fmt.Errorf("generation failed: %w", err)
 	}

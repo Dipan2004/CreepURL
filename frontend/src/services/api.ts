@@ -1,12 +1,19 @@
 import axios from 'axios'
 
-const defaultApiBaseURL =
+const isLocalhost =
   window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? '/api'
-    : 'https://dipan004-creepurl.hf.space/api'
+
+const envApiBaseURL = import.meta.env.VITE_API_URL?.trim()
+
+const baseURL =
+  envApiBaseURL && (isLocalhost || /^https?:\/\//.test(envApiBaseURL))
+    ? envApiBaseURL
+    : isLocalhost
+      ? '/api'
+      : 'https://dipan004-creepurl.hf.space/api'
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || defaultApiBaseURL,
+  baseURL,
   timeout: 10000,
   headers: { 'Content-Type': 'application/json' },
 })

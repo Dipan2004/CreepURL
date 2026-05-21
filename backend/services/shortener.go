@@ -17,23 +17,21 @@ const maxCollisionRetries = 10
 type ShortenerService struct {
 	db         *database.DB
 	slugEngine *generators.SlugEngine
-	baseURL    string
 }
 
 func NewShortenerService(db *database.DB, baseURL string) *ShortenerService {
 	return &ShortenerService{
 		db:         db,
 		slugEngine: generators.NewSlugEngine(),
-		baseURL:    baseURL,
 	}
 }
 
 // Create generates N unique slugs, persists each, returns ShortLinkResults.
-func (s *ShortenerService) Create(originalURL string, level int, count int) ([]models.ShortLinkResult, error) {
+func (s *ShortenerService) Create(originalURL string, level int, count int, baseURL string) ([]models.ShortLinkResult, error) {
 	results := make([]models.ShortLinkResult, 0, count)
 
 	for i := 0; i < count; i++ {
-		link, err := s.createOne(originalURL, level)
+		link, err := s.createOne(originalURL, level, baseURL)
 		if err != nil {
 			log.Printf("slug creation attempt %d failed: %v", i, err)
 			continue
@@ -53,7 +51,7 @@ func (s *ShortenerService) Create(originalURL string, level int, count int) ([]m
 }
 
 // createOne generates a unique slug with collision retry, then persists it.
-func (s *ShortenerService) createOne(originalURL string, level int) (*models.ShortLink, error) {
+func (s *ShortenerService) createOne(originalURL string, level int, baseURL string) (*models.ShortLink, error) {
 	var slug string
 	var err error
 
@@ -74,7 +72,7 @@ func (s *ShortenerService) createOne(originalURL string, level int) (*models.Sho
 		slug = fmt.Sprintf("%s-%d", slug, attempt)
 	}
 
-	fullShortURL := fmt.Sprintf("%s/%s", s.baseURL, slug)
+	fullShortURL := fmt.Sprintf("%s/%s", baseURL, slug)
 
 	link := &models.ShortLink{
 		OriginalURL:      originalURL,

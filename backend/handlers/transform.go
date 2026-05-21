@@ -32,7 +32,7 @@ func (h *TransformHandler) Transform(c *fiber.Ctx) error {
 		req.DestructionLevel = 3
 	}
 
-	result, err := h.service.Transform(req.URL, req.DestructionLevel)
+	result, err := h.service.Transform(req.URL, req.DestructionLevel, c.BaseURL())
 	if err != nil {
 		log.Printf("Transform error: %v", err)
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
