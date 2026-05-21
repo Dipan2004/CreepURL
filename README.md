@@ -12,7 +12,6 @@ friendship.exe has stopped working
 
 <br/>
 
-![status](https://img.shields.io/badge/status-unnecessarily_functional-yellow?style=for-the-badge)
 ![chaos](https://img.shields.io/badge/chaos-level_critical-orange?style=for-the-badge)
 ![trust](https://img.shields.io/badge/friend_trust-destroyed-red?style=for-the-badge)
 ![backend](https://img.shields.io/badge/backend-go-blue?style=for-the-badge)
