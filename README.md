@@ -1,6 +1,33 @@
+<div align="center">
+
 # CreepURL
 
-> certified useless internet technology™
+### certified useless internet technology™  
+
+```txt
+friendship.exe has stopped working
+```
+
+<img src="./demo1.png" width="100%" />
+
+<br/>
+
+![status](https://img.shields.io/badge/status-unnecessarily_functional-yellow?style=for-the-badge)
+![chaos](https://img.shields.io/badge/chaos-level_critical-orange?style=for-the-badge)
+![trust](https://img.shields.io/badge/friend_trust-destroyed-red?style=for-the-badge)
+![backend](https://img.shields.io/badge/backend-go-blue?style=for-the-badge)
+
+<br/>
+
+```txt
+normal people use bit.ly
+we manufacture digital paranoia
+```
+
+</div>
+
+---
+
 
 CreepURL is a completely unnecessary website that generates chaotic fake URLs nobody asked for but somehow look important enough to click.
 
