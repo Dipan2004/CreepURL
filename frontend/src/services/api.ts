@@ -1,20 +1,12 @@
 import axios from 'axios'
 
-const isLocalhost =
-  window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-
-const envApiBaseURL = import.meta.env.VITE_API_URL?.trim()
-
-const baseURL =
-  envApiBaseURL && (isLocalhost || /^https?:\/\//.test(envApiBaseURL))
-    ? envApiBaseURL
-    : isLocalhost
-      ? '/api'
-      : 'https://dipan004-creepurl.hf.space/api'
+// Priority: explicit env var → relative /api (works when frontend and backend are same origin)
+// For Render static site + HF backend, set VITE_API_URL=https://your-hf-space.hf.space/api
+const baseURL = import.meta.env.VITE_API_URL?.trim() || '/api'
 
 const api = axios.create({
   baseURL,
-  timeout: 10000,
+  timeout: 15000,
   headers: { 'Content-Type': 'application/json' },
 })
 
