@@ -19,13 +19,7 @@ friendship.exe has stopped working
 
 <br/>
 
-```txt
-normal people use bit.ly
-we manufacture digital paranoia
-```
-
 </div>
-
 ---
 
 
